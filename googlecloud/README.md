@@ -38,4 +38,4 @@ The service_account.tf file creates three service accounts with suffixes -foo, -
 - bar: workflows executed on the develop branch of this repository.
 - baz: workflows executed with Environment `production`.
 
-**Note**: About baz, since the pool recognizes repositories under `komazarari/*`, it allows workflows of any repositories under `komazarari/*` with Environemnt `production`. If the pool had NO conditions, this configuration would allow workflows of any repositories in GitHub with Environment `production` to impersonate the service account and be insecure.
+**Note**: About baz, since the pool recognizes repositories under `komazarari/*`, it allows workflows of any repositories under `komazarari/*` with Environemnt `production`. If the pool had NO conditions, this configuration would enable workflows of any repositories in GitHub with Environment `production` to impersonate the service account and be insecure.
