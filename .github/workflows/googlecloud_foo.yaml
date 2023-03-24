@@ -1,0 +1,26 @@
+name: Google Cloud Foo
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Google Cloud Access as Foo
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: auth
+        uses: google-github-actions/auth@v1
+        with:
+          workload_identity_provider: projects/640067990019/locations/global/workloadIdentityPools/github-pool/providers/github-actions
+          service_account: github-actions-foo@github-test-381507.iam.gserviceaccount.com
+      - name: Set up gcloud
+        uses: google-github-actions/setup-gcloud@v1
+      - name: Use gcloud
+        run: |
+          gcloud auth list
+          touch testfile_foo
+          gcloud storage cp ./testfile_foo gs://github-test-381507/testfile_foo && echo success || echo failed
