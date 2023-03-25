@@ -56,7 +56,7 @@ resource "google_service_account_iam_binding" "github_actions_foo_wi_binding" {
   service_account_id = google_service_account.github_actions_foo.name
   role               = "roles/iam.workloadIdentityUser"
   members = [
-    "principal://iam.googleapis.com/${google_iam_workload_identity_pool.github.name}/subject/repo:komazarari/example_githubactions_oidc:ref:refs/heads/main",
+    "principal://iam.googleapis.com/${google_iam_workload_identity_pool.github.name}/subject/repo:${var.org_name}/example_githubactions_oidc:ref:refs/heads/main",
   ]
 }
 
@@ -64,7 +64,7 @@ resource "google_service_account_iam_binding" "github_actions_bar_wi_binding" {
   service_account_id = google_service_account.github_actions_bar.name
   role               = "roles/iam.workloadIdentityUser"
   members = [
-    "principal://iam.googleapis.com/${google_iam_workload_identity_pool.github.name}/subject/repo:komazarari/example_githubactions_oidc:ref:refs/heads/develop",
+    "principal://iam.googleapis.com/${google_iam_workload_identity_pool.github.name}/subject/repo:${var.org_name}/example_githubactions_oidc:ref:refs/heads/develop",
   ]
 }
 
