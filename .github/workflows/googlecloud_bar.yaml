@@ -23,4 +23,5 @@ jobs:
         run: |
           gcloud auth list
           touch testfile_bar
+          gcloud storage ls
           gcloud storage cp ./testfile_bar gs://github-test-381507/testfile_bar && echo success || echo failed
